@@ -9,7 +9,7 @@
 var distanceinKm;
 var userAge;
 var ticketPrice;
-var newPrice;
+var fixedPrice;
 
 // chiedere a utente km da percorrere
 distanceinKm = parseInt(prompt("Quanti km vuoi percorrere?"));
@@ -21,12 +21,16 @@ console.log(ticketPrice);
 
 // calcolo prezzo viaggio se under 18
 if (userAge < 18) {
-    newPrice = ticketPrice - (ticketPrice * 0.2);
+    ticketPrice = ticketPrice - (ticketPrice * 0.2);
 // calcolo prezzo viaggio se over 65
 } else if (userAge > 65) {
-    newPrice = ticketPrice - (ticketPrice * 0.4);
+    ticketPrice = ticketPrice - (ticketPrice * 0.4);
 } else {
-    newPrice = ticketPrice;
+    ticketPrice = ticketPrice;
 }
 
-document.getElementById('ticket').innerHTML = "Il prezzo da pagare per la corsa scelta è: " + newPrice + " Euro";
+// arrotondamento prezzo biglietto
+fixedPrice = ticketPrice.toFixed(2);
+
+// Stampa prezzo biglietto
+document.getElementById('ticket').innerHTML = "Il prezzo da pagare per la corsa scelta è: " + fixedPrice + " Euro";
